@@ -123,14 +123,8 @@ pub struct HeadlineData<'a> {
     /// Non_nil if the headline has an archive tag (boolean).
     archivedp: bool,
 
-    /// Headline's CLOSED reference, if any (timestamp object or nil)
-    closed: Option<TimestampData<'a>>,
-
     /// Non_nil if the headline has a comment keyword (boolean).
     commentedp: bool,
-
-    /// Headline's DEADLINE reference, if any (timestamp object or nil).
-    deadline: Option<TimestampData<'a>>,
 
     /// Non_nil if the headline is a footnote section (boolean).
     footnote_section_p: bool,
@@ -151,9 +145,6 @@ pub struct HeadlineData<'a> {
     /// Raw headline's text, without the stars and the tags (string).
     raw_value: &'a str,
 
-    /// Headline's SCHEDULED reference, if any (timestamp object or nil).
-    scheduled: Option<TimestampData<'a>>,
-
     /// Headline's tags, if any, without
     /// the archive tag. (list of strings).
     tags: Vec<Tag<'a>>,
@@ -166,6 +157,20 @@ pub struct HeadlineData<'a> {
     /// strings, if any (string or nil).
     /// also used instead of todo-type
     todo_keyword: TodoKeyword,
+
+    /// :scheduled, :deadline, and :closed
+    time_properties: TimeProperties<'a>,
+}
+
+pub struct TimeProperties<'a> {
+    /// Headline's SCHEDULED reference, if any (timestamp object or nil).
+    scheduled: Option<TimestampData<'a>>,
+
+    /// Headline's DEADLINE reference, if any (timestamp object or nil).
+    deadline: Option<TimestampData<'a>>,
+
+    /// Headline's CLOSED reference, if any (timestamp object or nil)
+    closed: Option<TimestampData<'a>>,
 }
 
 pub struct InlineTaskData<'a> {
