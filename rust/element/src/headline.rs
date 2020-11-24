@@ -160,6 +160,10 @@ pub struct HeadlineData<'a> {
 
     /// :scheduled, :deadline, and :closed
     time_properties: TimeProperties<'a>,
+
+    /// Additional properties, defined in the :PROPERTIES: drawer. Property
+    /// names are upcased.
+    node_properties: HashMap<String, &'a str>,
 }
 
 pub struct TimeProperties<'a> {
